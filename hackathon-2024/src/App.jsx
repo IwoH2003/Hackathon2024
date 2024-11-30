@@ -10,6 +10,9 @@ import { Register } from "./components/Register";
 import Settings from "./components/Settings";
 import Ranking from "./components/Ranking";
 import "./index.css";
+import Cooking from "./components/tutorials/Cooking";
+import Drawing from "./components/tutorials/Drawing";
+import Photography from "./components/tutorials/Photography";
 
 export const AppContext = createContext();
 
@@ -57,12 +60,9 @@ function App() {
         <Route path="/ranking" element={<Ranking />} />
         <Route path="/find-hobby" element={<FindNewHobby />} />
         <Route path="/user-profile" element={<UserProfile />} />
-        <Route
-          path="/tutorial/photography"
-          element={<h1>Fotografia Tutorial</h1>}
-        />
-        <Route path="/tutorial/drawing" element={<h1>Rysowanie Tutorial</h1>} />
-        <Route path="/tutorial/cooking" element={<h1>Gotowanie Tutorial</h1>} />
+        <Route path="/tutorial/drawing" element={<Drawing />} />
+        <Route path="/tutorial/cooking" element={<Cooking />} />
+        <Route path="/tutorial/photography" element={<Photography />} />
       </Routes>
       <Footer />
     </AppContext.Provider>
