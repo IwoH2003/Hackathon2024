@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import { jwtDecode } from "jwt-decode"; // Import jwt-decode
 import Header from "./components/Header";
 import LandingPage from "./components/LandingPage";
 import { Login } from "./components/Login";
@@ -17,20 +18,39 @@ function App() {
   const [userId, setUserId] = useState(1);
   const [theme, setTheme] = useState("light");
   const [fontSize, setFontSize] = useState("medium");
+
   useEffect(() => {
-    if (sessionStorage.getItem("accessKey")) {
+    // Check if the access token exists
+    const jwt = sessionStorage.getItem("accessKey");
+    if (jwt) {
       setLogged(true);
+
+      try {
+        // Decode the JWT
+        const decodedToken = jwtDecode(jwt);
+        console.log("Decoded JWT:", decodedToken);
+
+        // Optional: Update userId or other state from the token
+        if (decodedToken.userId) {
+          setUserId(decodedToken.userId);
+          console.log(userId);
+          console.log("CHUJJJJJ");
+        }
+      } catch (error) {
+        console.error("Invalid JWT:", error);
+      }
     }
   }, []);
 
   useEffect(() => {
-    document.body.className = ""; // Resetuje klasy
+    document.body.className = ""; // Reset classes
     document.body.classList.add(theme);
     document.body.style.setProperty(
       "--font-size",
       fontSize === "small" ? "14px" : fontSize === "large" ? "26px" : "16px"
     );
   }, [theme, fontSize]);
+
   return (
     <AppContext.Provider
       value={{
@@ -51,7 +71,6 @@ function App() {
         <Route path="/about" element={<h1>About Page</h1>} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/register" element={<Register />} />
-
         <Route path="/find-hobby" element={<FindNewHobby />} />
         <Route path="/user-profile" element={<UserProfile />} />
         <Route

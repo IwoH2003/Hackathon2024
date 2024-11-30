@@ -1,26 +1,98 @@
+/* Container for the entire page */
 .user-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  margin-top: 50px;
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.image-wrapper {
-  width: 300px;
-  height: 300px;
+/* Top Section: User Photo and Summary */
+.top-section {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.user-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
   background-size: cover;
   background-position: center;
-  border-radius: 8px;
-  position: relative;
-  overflow: hidden;
-  transition:
-    opacity 1s ease-in-out,
-    transform 1s ease-in-out;
+  margin-right: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.image-wrapper:hover {
-  transform: scale(1.05);
+.users-summary {
+  flex: 1;
+}
+
+.users-summary h2 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.users-summary p {
+  margin-top: 10px;
+  color: #555;
+}
+
+/* Center Section: Activities Title */
+.activities-title {
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Bottom Section: Activities Carousel */
+.activities-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+}
+
+.activities {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.activities .image-wrapper {
+  width: 150px;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.scroll-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  margin: 0 10px;
+  transition: background-color 0.3s;
+}
+
+.scroll-button:hover {
+  background-color: #0056b3;
 }
