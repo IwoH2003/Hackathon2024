@@ -29,6 +29,16 @@ export function Login() {
 
   return (
     <>
+      <div className="login-container" />
+      {/* Background Video */}
+      <video autoPlay loop muted playsInline className="background-video">
+        <source src={motherAndChild} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Overlay for dimming */}
+      <div className="overlay"></div>
+      {/* Login Form */}
       <form className="login-form" onSubmit={formik.handleSubmit}>
         <label htmlFor="Email">Email Address</label>
         <input
@@ -38,7 +48,7 @@ export function Login() {
           onChange={formik.handleChange}
           value={formik.values.email}
         />
-        <label htmlFor="Password">Password</label>
+        <label htmlFor="password">Password</label>
         <input
           id="password"
           name="password"

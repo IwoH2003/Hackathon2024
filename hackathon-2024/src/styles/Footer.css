@@ -1,6 +1,5 @@
+/* General Footer Styles */
 .footer {
-  background-color: #333;
-  color: #fff;
   padding: 20px 0;
   text-align: center;
   font-size: 0.9rem;
@@ -8,12 +7,49 @@
   min-height: 90vh;
 }
 
-/* High Contrast adjustments */
-body.high-contrast .footer {
-  background-color: #000;
-  color: #ffff00;
+/* Light Mode */
+body.light .footer {
+  background-color: #f8f8f8; /* Jasne tło */
+  color: #333; /* Ciemny tekst */
 }
 
+body.light .footer-links a {
+  color: #007bff; /* Niebieskie linki */
+}
+
+body.light .footer-links a:hover {
+  color: #0056b3; /* Ciemniejszy niebieski na hover */
+}
+
+/* Dark Mode */
+body.dark .footer {
+  background-color: #1e1e1e; /* Ciemne tło */
+  color: #e0e0e0; /* Jasny tekst */
+}
+
+body.dark .footer-links a {
+  color: #90caf9; /* Jasnoniebieskie linki */
+}
+
+body.dark .footer-links a:hover {
+  color: #64b5f6; /* Jaśniejszy niebieski na hover */
+}
+
+/* High Contrast Mode */
+body.high-contrast .footer {
+  background-color: #000; /* Czarne tło */
+  color: #ffff00; /* Żółty tekst */
+}
+
+body.high-contrast .footer-links a {
+  color: #ffff00; /* Żółte linki */
+}
+
+body.high-contrast .footer-links a:hover {
+  color: #ffcc00; /* Jaśniejszy żółty na hover */
+}
+
+/* Footer Container */
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -23,15 +59,12 @@ body.high-contrast .footer {
   gap: 10px;
 }
 
+/* Footer Text */
 .footer p {
   margin: 0;
 }
 
-/* High Contrast adjustments for footer text */
-body.high-contrast .footer p {
-  color: #ffff00;
-}
-
+/* Footer Links */
 .footer-links {
   list-style: none;
   padding: 0;
@@ -40,26 +73,11 @@ body.high-contrast .footer p {
   justify-content: center;
 }
 
-/* High Contrast adjustments for links */
-body.high-contrast .footer-links a {
-  color: #ffff00;
-}
-
 .footer-links li {
   margin: 0;
 }
 
 .footer-links a {
-  color: #fff;
   text-decoration: none;
   transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-  color: #007bff;
-}
-
-/* High Contrast adjustments for hover state */
-body.high-contrast .footer-links a:hover {
-  color: #ffcc00;
 }

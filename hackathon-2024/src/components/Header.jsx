@@ -6,7 +6,7 @@ function Header() {
   return (
     <header className="header">
       <div className="header-container">
-        {/* H2 as a clickable link */}
+        {/* Logo */}
         <h2 className="header-logo-h2">
           <Link to="/">Hobbystycznie</Link>
         </h2>
@@ -23,6 +23,10 @@ function Header() {
             </li>
           </ul>
         </nav>
+        {/* Points Display */}
+        <div className="points-display">
+          🔥 <span className="points">0</span>
+        </div>
       </div>
     </header>
   );

@@ -2,6 +2,7 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  font-size: var(--font-size, 16px); /* Dynamic font size */
 }
 
 /* Light mode (default styles for body and header) */
@@ -63,37 +64,15 @@ body.high-contrast .nav-item a:hover {
   padding: 10px 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid hsl(0, 0%, 38%);
+  font-size: var(--font-size); /* Dynamic font size */
 }
 
 .header-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; /* Ensure elements are evenly spaced */
   max-width: 1200px;
   margin: 0 auto;
-}
-
-.header-logo {
-  width: 50px;
-  height: 50px;
-}
-
-.header-nav {
-  display: flex;
-}
-
-.nav-list {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-  padding: 0;
-  margin: 0;
-}
-
-.nav-item a {
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
 }
 
 .header-logo-h2 a {
@@ -101,19 +80,20 @@ body.high-contrast .nav-item a:hover {
   color: inherit;
   font-weight: bold;
   transition: color 0.3s ease;
+  font-size: calc(1.5 * var(--font-size)); /* Dynamic font size */
 }
 
-/* Font size adjustments */
+/* Font size adjustments for header logo */
 body.small-font .header-logo-h2 a {
-  font-size: 1rem; /* Mały rozmiar */
+  font-size: calc(1.2 * var(--font-size));
 }
 
 body.medium-font .header-logo-h2 a {
-  font-size: 1.5rem; /* Średni rozmiar (domyślny) */
+  font-size: calc(1.5 * var(--font-size)); /* Default size */
 }
 
 body.large-font .header-logo-h2 a {
-  font-size: 2rem; /* Duży rozmiar */
+  font-size: calc(2 * var(--font-size));
 }
 
 /* High Contrast adjustments for header logo */
@@ -123,4 +103,65 @@ body.high-contrast .header-logo-h2 a {
 
 body.high-contrast .header-logo-h2 a:hover {
   color: #ffcc00;
+}
+
+/* Nav styles */
+.header-nav {
+  display: flex;
+}
+
+.nav-list {
+  display: flex;
+  gap: 20px; /* Adds spacing between nav items */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item a {
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  font-size: calc(1 * var(--font-size)); /* Dynamic font size */
+}
+
+/* Points Display */
+.points-display {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: calc(1.2 * var(--font-size)); /* Dynamic font size */
+  color: var(--points-color, #333); /* Default points color */
+  gap: 5px; /* Adds spacing between the fire icon and points number */
+  margin-left: 20px; /* Adds space between points and the navigation */
+}
+
+/* Light Mode Points */
+body.light .points-display {
+  --points-color: #333;
+}
+
+body.dark .points-display {
+  --points-color: #e0e0e0;
+}
+
+body.high-contrast .points-display {
+  --points-color: #ffff00;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .points-display {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .nav-list {
+    gap: 10px;
+  }
 }

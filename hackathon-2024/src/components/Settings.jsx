@@ -14,7 +14,7 @@ function Settings() {
     setFontSize(localFontSize);
     localStorage.setItem("theme", localTheme);
     localStorage.setItem("fontSize", localFontSize);
-    navigate("/LandingPage"); // Przekierowanie na stronę profilu użytkownika
+    navigate("/"); // Przekierowanie na stronę profilu użytkownika
   };
 
   return (

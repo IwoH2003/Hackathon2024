@@ -1,8 +1,18 @@
 /* General styles */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  font-size: var(--font-size, 16px); /* Domyślny rozmiar czcionki */
+}
+
+/* Find New Hobby Section */
 .find-new-hobby {
   text-align: center;
   min-height: 90vh;
   padding: 20px;
+  font-size: var(--font-size); /* Dziedziczenie dynamicznego rozmiaru */
 }
 
 /* High Contrast adjustments */
@@ -50,8 +60,9 @@ body.high-contrast .image-wrapper {
   transform: scale(1);
 }
 
+/* Headings */
 h2 {
-  font-size: 1.5rem;
+  font-size: calc(1.5 * var(--font-size)); /* Dynamic font size for headings */
   margin-top: 20px;
 }
 
@@ -60,8 +71,9 @@ body.high-contrast h2 {
   color: #ffff00;
 }
 
+/* Paragraphs */
 p {
-  font-size: 1rem;
+  font-size: calc(1 * var(--font-size)); /* Dynamic font size for paragraphs */
   margin: 10px 0 20px;
 }
 
@@ -76,11 +88,13 @@ body.high-contrast p {
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
+  padding: calc(0.8 * var(--font-size)) calc(1.2 * var(--font-size)); /* Dynamic padding */
+  font-size: calc(1 * var(--font-size)); /* Dynamic font size */
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
 }
 
 /* Light Mode Button Hover */
@@ -88,6 +102,7 @@ body.light .randomize-button:hover,
 body.light .learn-button:hover {
   background-color: #0056b3;
   color: white;
+  transform: scale(1.05); /* Subtle scaling effect */
 }
 
 /* Dark Mode Button Hover */
@@ -95,6 +110,7 @@ body.dark .randomize-button:hover,
 body.dark .learn-button:hover {
   background-color: #64b5f6;
   color: #121212;
+  transform: scale(1.05); /* Subtle scaling effect */
 }
 
 /* High Contrast Button Hover */
@@ -102,6 +118,7 @@ body.high-contrast .randomize-button:hover,
 body.high-contrast .learn-button:hover {
   background-color: #ffcc00;
   color: #000000;
+  transform: scale(1.05); /* Subtle scaling effect */
 }
 
 /* High Contrast adjustments for buttons */
@@ -118,25 +135,11 @@ body.high-contrast .learn-button {
   width: 100%;
   text-align: center;
   color: black;
-  font-size: 1.2rem;
+  font-size: calc(1.2 * var(--font-size)); /* Dynamic font size */
   font-weight: bold;
 }
 
 /* High Contrast adjustments for end message */
 body.high-contrast .end-message {
   color: #ffff00;
-}
-
-.image-wrapper {
-  width: 100%;
-  height: 300px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 8px;
-  position: relative;
-  overflow: hidden;
-  transition:
-    opacity 1s ease-in-out,
-    transform 1s ease-in-out;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }

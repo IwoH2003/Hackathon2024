@@ -1,8 +1,10 @@
 /* General Settings Styles */
 .settings {
+  height: 90vh;
   padding: 20px;
   max-width: 600px;
   margin: 0 auto;
+  font-size: var(--font-size, 16px); /* Dynamic font size inheritance */
 }
 
 /* Light mode (default) */
@@ -62,8 +64,10 @@ body.high-contrast .save-button:hover {
 
 .settings-option select,
 .settings-option button {
-  padding: 10px;
-  font-size: 16px;
+  padding: calc(
+    0.8 * var(--font-size)
+  ); /* Dynamic padding based on font size */
+  font-size: calc(1 * var(--font-size)); /* Dynamic font size */
 }
 
 /* Buttons */
@@ -73,9 +77,16 @@ body.high-contrast .save-button:hover {
 
 .save-button {
   border: none;
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: calc(0.8 * var(--font-size)) calc(1.2 * var(--font-size)); /* Dynamic padding */
+  font-size: calc(1 * var(--font-size)); /* Dynamic font size */
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+}
+
+/* Button Hover Effects */
+.save-button:hover {
+  transform: scale(1.05); /* Slight scaling effect for hover */
 }

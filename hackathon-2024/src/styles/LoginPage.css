@@ -1,19 +1,20 @@
-/* General Reset */
+/* General styles */
 body,
 html {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
+  height: 100%;
 }
 
-/* Landing Page Styles */
-.login-form {
-  font-family: Arial, sans-serif;
-  font-weight: bold;
+/* Login Container */
+.login-container {
+  position: relative;
+  height: 100vh; /* Full viewport height */
   display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
+<<<<<<< HEAD
   height: auto;
   background-color: #f9f9f9;
   padding: 0 20px;
@@ -29,32 +30,157 @@ html {
   margin-top: 20px;
   background-color: #f9f9f9;
   padding: 0 20px;
+=======
+  overflow: hidden;
 }
 
-.title {
-  font-size: 2.5rem;
-  color: #333;
+/* Background Video */
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the video covers the entire background */
+  z-index: -2; /* Push the video behind other elements */
+}
+
+/* Overlay for dimming the video */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+  z-index: -1; /* Push the overlay behind the form */
+}
+
+/* Login Form */
+.login-form {
+  z-index: 1; /* Ensures the form is above the overlay */
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: var(
+    --form-background,
+    #fff
+  ); /* Background color for the form */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for form */
+  color: var(--form-text-color, #333);
+  font-size: var(--font-size, 16px); /* Dynamic font size */
+  text-align: left;
+>>>>>>> e9626a889ee806557ddbe98ea867c84828234010
+}
+
+/* Input Fields */
+.login-form input {
+  width: 100%;
+  padding: 15px 30px; /* Consistent padding for inputs */
   margin-bottom: 20px;
+  border: 1px solid var(--input-border-color, #ccc);
+  border-radius: 4px;
+  font-size: var(--font-size, 16px); /* Dynamic font size */
+  background-color: var(--input-background, #f9f9f9);
+  color: var(--input-text-color, #333);
+  box-sizing: border-box; /* Ensure padding and borders are included in the element's total width/height */
 }
 
-.description {
-  font-size: 1.2rem;
-  color: #555;
-  margin-bottom: 30px;
-  line-height: 1.6;
+/* Labels */
+.login-form label {
+  font-size: calc(1 * var(--font-size)); /* Adjust label size dynamically */
+  margin-bottom: 5px;
+  display: block;
 }
 
-.start-quiz-btn {
-  background-color: #007bff;
-  color: white;
+/* Submit Button */
+.login-form button {
+  width: 100%;
+  padding: 15px 30px; /* Match padding with inputs */
+  font-size: calc(1 * var(--font-size)); /* Dynamic font size */
+  background-color: var(--button-background, #007bff);
+  color: var(--button-text-color, white);
   border: none;
-  padding: 15px 30px;
-  font-size: 1rem;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
 }
 
-.start-quiz-btn:hover {
-  background-color: #0056b3;
+.login-form button:hover {
+  background-color: var(--button-hover-color, #0056b3);
+  transform: scale(1.05); /* Slight scaling on hover */
+}
+
+/* Light Mode */
+body.light .login-form {
+  --form-background: #ffffff;
+  --form-text-color: #333;
+  --input-border-color: #ccc;
+  --input-background: #ffffff;
+  --input-text-color: #333;
+  --button-background: #007bff;
+  --button-text-color: white;
+  --button-hover-color: #0056b3;
+}
+
+/* Dark Mode */
+body.dark {
+  background-color: #121212; /* Background for entire page */
+  color: #e0e0e0;
+}
+
+body.dark .login-form {
+  --form-background: #1e1e1e;
+  --form-text-color: #e0e0e0;
+  --input-border-color: #444;
+  --input-background: #2c2c2c;
+  --input-text-color: #e0e0e0;
+  --button-background: #90caf9;
+  --button-text-color: #121212;
+  --button-hover-color: #64b5f6;
+}
+
+/* High Contrast Mode */
+body.high-contrast {
+  background-color: #000; /* Background for entire page */
+  color: #ffff00;
+}
+
+body.high-contrast .login-form {
+  --form-background: #000;
+  --form-text-color: #ffff00;
+  --input-border-color: #ffff00;
+  --input-background: #000000;
+  --input-text-color: #ffff00;
+  --button-background: #ffff00;
+  --button-text-color: #000000;
+  --button-hover-color: #ffcc00;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .login-form {
+    padding: 15px;
+  }
+
+  .login-form button,
+  .login-form input {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-form {
+    padding: 10px;
+  }
+
+  .login-form button,
+  .login-form input {
+    font-size: 12px;
+    padding: 8px;
+  }
 }
