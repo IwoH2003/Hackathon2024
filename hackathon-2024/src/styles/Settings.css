@@ -1,0 +1,81 @@
+/* General Settings Styles */
+.settings {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Light mode (default) */
+body.light .settings {
+  background-color: #ffffff;
+  color: #333;
+}
+
+body.light .save-button {
+  background-color: #007bff;
+  color: white;
+}
+
+body.light .save-button:hover {
+  background-color: #0056b3;
+}
+
+/* Dark mode */
+body.dark .settings {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark .save-button {
+  background-color: #90caf9;
+  color: #121212;
+}
+
+body.dark .save-button:hover {
+  background-color: #64b5f6;
+}
+
+/* High Contrast mode */
+body.high-contrast .settings {
+  background-color: #000;
+  color: #ffff00;
+}
+
+body.high-contrast .save-button {
+  background-color: #ffff00;
+  color: #000;
+}
+
+body.high-contrast .save-button:hover {
+  background-color: #ffcc00;
+}
+
+/* Options */
+.settings-option {
+  margin-bottom: 20px;
+}
+
+.settings-option label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.settings-option select,
+.settings-option button {
+  padding: 10px;
+  font-size: 16px;
+}
+
+/* Buttons */
+.settings-buttons {
+  margin-top: 20px;
+}
+
+.save-button {
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}

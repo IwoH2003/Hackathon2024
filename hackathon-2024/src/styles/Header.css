@@ -4,8 +4,62 @@ body {
   font-family: Arial, sans-serif;
 }
 
-.header {
+/* Light mode (default styles for body and header) */
+body.light .header {
   background-color: #f8f8f8;
+  color: #333;
+}
+
+body.light .nav-item a {
+  color: #333;
+}
+
+body.light .nav-item a:hover {
+  color: #007bff;
+}
+
+/* Dark mode */
+body.dark {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark .header {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  border-bottom: 1px solid #444;
+}
+
+body.dark .nav-item a {
+  color: #e0e0e0;
+}
+
+body.dark .nav-item a:hover {
+  color: #90caf9;
+}
+
+/* High Contrast mode */
+body.high-contrast {
+  background-color: #000;
+  color: #ffff00;
+}
+
+body.high-contrast .header {
+  background-color: #000;
+  color: #ffff00;
+  border-bottom: 1px solid #ffff00;
+}
+
+body.high-contrast .nav-item a {
+  color: #ffff00;
+}
+
+body.high-contrast .nav-item a:hover {
+  color: #ffcc00;
+}
+
+/* Header styles */
+.header {
   padding: 10px 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid hsl(0, 0%, 38%);
@@ -38,22 +92,35 @@ body {
 
 .nav-item a {
   text-decoration: none;
-  color: #333;
   font-weight: bold;
   transition: color 0.3s ease;
 }
 
-.nav-item a:hover {
-  color: #007bff;
-}
 .header-logo-h2 a {
   text-decoration: none;
   color: inherit;
-  font-size: 1.5rem;
   font-weight: bold;
   transition: color 0.3s ease;
 }
 
-.header-logo-h2 a:hover {
-  color: #007bff;
+/* Font size adjustments */
+body.small-font .header-logo-h2 a {
+  font-size: 1rem; /* Mały rozmiar */
+}
+
+body.medium-font .header-logo-h2 a {
+  font-size: 1.5rem; /* Średni rozmiar (domyślny) */
+}
+
+body.large-font .header-logo-h2 a {
+  font-size: 2rem; /* Duży rozmiar */
+}
+
+/* High Contrast adjustments for header logo */
+body.high-contrast .header-logo-h2 a {
+  color: #ffff00;
+}
+
+body.high-contrast .header-logo-h2 a:hover {
+  color: #ffcc00;
 }

@@ -10,7 +10,9 @@ namespace Hackaton2024.API.Entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+            modelBuilder.Entity<User>()
+                .HasMany(p => p.Activities)
+                .WithOne(x => x.User);
         }
     }
 }

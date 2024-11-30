@@ -6,20 +6,89 @@ html {
   font-family: Arial, sans-serif;
 }
 
+/* Light mode (default styles for landing page) */
+body.light .landing-page {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+body.light .content-container {
+  background: white;
+  color: #333;
+}
+
+body.light .start-quiz-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+body.light .start-quiz-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Dark mode */
+body.dark .landing-page {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark .content-container {
+  background: #1e1e1e;
+  color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+body.dark .start-quiz-btn {
+  background-color: #bfe2ff;
+  color: #121212;
+}
+
+body.dark .start-quiz-btn:hover {
+  background-color: #64b5f6;
+}
+
+/* High Contrast mode */
+body.high-contrast .landing-page {
+  background-color: #000;
+  color: #ffff00;
+}
+
+body.high-contrast .content-container {
+  background: #000;
+  color: #ffff00;
+  border: 2px solid #ffff00;
+}
+
+body.high-contrast .start-quiz-btn {
+  background-color: #ffff00;
+  color: #000;
+}
+
+body.high-contrast .start-quiz-btn:hover {
+  background-color: #ffcc00;
+}
+body.high-contrast .title {
+  color: #ffff00;
+}
+body.dark .title {
+  color: #f9f9f9;
+}
+body.dark .description {
+  color: #f9f9f9;
+}
+
 /* Landing Page Styles */
 .landing-page {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f9f9f9;
   padding: 0 20px;
 }
 
 .content-container {
   max-width: 800px;
   text-align: center;
-  background: white;
   padding: 40px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -27,28 +96,20 @@ html {
 
 .title {
   font-size: 2.5rem;
-  color: #333;
   margin-bottom: 20px;
 }
 
 .description {
   font-size: 1.2rem;
-  color: #555;
   margin-bottom: 30px;
   line-height: 1.6;
 }
 
 .start-quiz-btn {
-  background-color: #007bff;
-  color: white;
   border: none;
   padding: 15px 30px;
   font-size: 1rem;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-}
-
-.start-quiz-btn:hover {
-  background-color: #0056b3;
 }

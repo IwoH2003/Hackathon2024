@@ -1,7 +1,14 @@
 /* General styles */
 .find-new-hobby {
   text-align: center;
+  min-height: 90vh;
   padding: 20px;
+}
+
+/* High Contrast adjustments */
+body.high-contrast .find-new-hobby {
+  background-color: #000000;
+  color: #ffff00;
 }
 
 .hobby-container {
@@ -25,6 +32,12 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* High Contrast adjustments for image wrapper */
+body.high-contrast .image-wrapper {
+  border: 3px solid #ffff00;
+  box-shadow: 0 4px 6px rgba(255, 255, 0, 0.8);
+}
+
 /* Animation for fading out */
 .image-wrapper.fade-out {
   opacity: 0;
@@ -42,9 +55,19 @@ h2 {
   margin-top: 20px;
 }
 
+/* High Contrast adjustments for h2 */
+body.high-contrast h2 {
+  color: #ffff00;
+}
+
 p {
   font-size: 1rem;
   margin: 10px 0 20px;
+}
+
+/* High Contrast adjustments for paragraphs */
+body.high-contrast p {
+  color: #ffff00;
 }
 
 /* Buttons */
@@ -60,10 +83,34 @@ p {
   transition: background-color 0.3s ease;
 }
 
-.randomize-button:hover,
-.learn-button:hover {
+/* Light Mode Button Hover */
+body.light .randomize-button:hover,
+body.light .learn-button:hover {
   background-color: #0056b3;
+  color: white;
 }
+
+/* Dark Mode Button Hover */
+body.dark .randomize-button:hover,
+body.dark .learn-button:hover {
+  background-color: #64b5f6;
+  color: #121212;
+}
+
+/* High Contrast Button Hover */
+body.high-contrast .randomize-button:hover,
+body.high-contrast .learn-button:hover {
+  background-color: #ffcc00;
+  color: #000000;
+}
+
+/* High Contrast adjustments for buttons */
+body.high-contrast .randomize-button,
+body.high-contrast .learn-button {
+  background-color: #ffff00;
+  color: #000000;
+}
+
 /* Final message */
 .end-message {
   position: absolute;
@@ -73,6 +120,11 @@ p {
   color: black;
   font-size: 1.2rem;
   font-weight: bold;
+}
+
+/* High Contrast adjustments for end message */
+body.high-contrast .end-message {
+  color: #ffff00;
 }
 
 .image-wrapper {

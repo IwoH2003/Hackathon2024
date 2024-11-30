@@ -1,0 +1,35 @@
+/* Domyślny styl (jasny tryb) */
+body.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Ciemny tryb */
+body.dark {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Tryb wysokiego kontrastu */
+body.high-contrast {
+  background-color: #000000;
+  color: #ffff00;
+  font-weight: bold;
+}
+/* Large font */
+body.large-font {
+  --font-size: 20px;
+}
+
+/* Small font */
+body.small-font {
+  --font-size: 14px;
+}
+
+/* Medium font (default) */
+body.medium-font {
+  --font-size: 16px;
+}
+body {
+  font-size: var(--font-size, 16px);
+}

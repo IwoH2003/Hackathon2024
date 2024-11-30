@@ -6,6 +6,12 @@
   font-size: 0.9rem;
 }
 
+/* High Contrast adjustments */
+body.high-contrast .footer {
+  background-color: #000;
+  color: #ffff00;
+}
+
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -19,12 +25,22 @@
   margin: 0;
 }
 
+/* High Contrast adjustments for footer text */
+body.high-contrast .footer p {
+  color: #ffff00;
+}
+
 .footer-links {
   list-style: none;
   padding: 0;
   display: flex;
   gap: 15px;
   justify-content: center;
+}
+
+/* High Contrast adjustments for links */
+body.high-contrast .footer-links a {
+  color: #ffff00;
 }
 
 .footer-links li {
@@ -39,4 +55,9 @@
 
 .footer-links a:hover {
   color: #007bff;
+}
+
+/* High Contrast adjustments for hover state */
+body.high-contrast .footer-links a:hover {
+  color: #ffcc00;
 }

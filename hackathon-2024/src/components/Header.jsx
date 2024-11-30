@@ -13,7 +13,7 @@ function Header() {
         <nav className="header-nav">
           <ul className="nav-list">
             <li className="nav-item">
-              <a href="#about">Ustawienia</a>
+              <Link to="/settings">Ustawienia</Link>
             </li>
             <li className="nav-item">
               <a href="#services">Ranking</a>
