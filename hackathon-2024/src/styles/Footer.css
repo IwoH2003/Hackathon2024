@@ -1,50 +1,11 @@
 /* General Footer Styles */
 .footer {
+  position: relative; /* Ustawia stopkę względem strony */
   padding: 20px 0;
   text-align: center;
   font-size: 0.9rem;
-}
-/* dupa123/
-/* Light Mode */
-body.light .footer {
-  background-color: #f8f8f8; /* Jasne tło */
-  color: #333; /* Ciemny tekst */
-}
-
-body.light .footer-links a {
-  color: #007bff; /* Niebieskie linki */
-}
-
-body.light .footer-links a:hover {
-  color: #0056b3; /* Ciemniejszy niebieski na hover */
-}
-
-/* Dark Mode */
-body.dark .footer {
-  background-color: #1e1e1e; /* Ciemne tło */
-  color: #e0e0e0; /* Jasny tekst */
-}
-
-body.dark .footer-links a {
-  color: #90caf9; /* Jasnoniebieskie linki */
-}
-
-body.dark .footer-links a:hover {
-  color: #64b5f6; /* Jaśniejszy niebieski na hover */
-}
-
-/* High Contrast Mode */
-body.high-contrast .footer {
-  background-color: #000; /* Czarne tło */
-  color: #ffff00; /* Żółty tekst */
-}
-
-body.high-contrast .footer-links a {
-  color: #ffff00; /* Żółte linki */
-}
-
-body.high-contrast .footer-links a:hover {
-  color: #ffcc00; /* Jaśniejszy żółty na hover */
+  background-color: var(--footer-bg, #f8f8f8); /* Domyślne jasne tło */
+  color: var(--footer-color, #333); /* Domyślny ciemny tekst */
 }
 
 /* Footer Container */
@@ -54,12 +15,14 @@ body.high-contrast .footer-links a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 10px; /* Odstęp między elementami */
 }
 
 /* Footer Text */
 .footer p {
   margin: 0;
+  font-size: 14px;
+  color: inherit; /* Kolor dziedziczony z rodzica */
 }
 
 /* Footer Links */
@@ -68,7 +31,7 @@ body.high-contrast .footer-links a:hover {
   padding: 0;
   display: flex;
   gap: 15px;
-  justify-content: center;
+  justify-content: center; /* Środkowanie linków */
 }
 
 .footer-links li {
@@ -76,6 +39,47 @@ body.high-contrast .footer-links a:hover {
 }
 
 .footer-links a {
+  color: inherit; /* Kolor dziedziczony z rodzica */
   text-decoration: none;
+  font-size: 14px;
   transition: color 0.3s ease;
+}
+
+/* Hover Effects */
+.footer-links a:hover {
+  color: var(--footer-link-hover, #007bff); /* Kolor linków po najechaniu */
+}
+
+/* Light Mode */
+body.light .footer {
+  --footer-bg: #f8f8f8;
+  --footer-color: #333;
+  --footer-link-hover: #0056b3;
+}
+
+/* Dark Mode */
+body.dark .footer {
+  --footer-bg: #1e1e1e;
+  --footer-color: #e0e0e0;
+  --footer-link-hover: #64b5f6;
+}
+
+/* High Contrast Mode */
+body.high-contrast .footer {
+  --footer-bg: #000;
+  --footer-color: #ffff00;
+  --footer-link-hover: #ffcc00;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-container {
+    padding: 0 10px;
+    text-align: center;
+  }
+
+  .footer-links {
+    flex-wrap: wrap; /* Zawijanie linków w wiersze */
+    gap: 10px;
+  }
 }

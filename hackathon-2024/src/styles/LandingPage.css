@@ -10,7 +10,7 @@ html {
 /* Landing Page Container */
 .landing-page {
   position: relative;
-  height: 100vh; /* Full viewport height */
+  height: 90vh; /* Full viewport height */
   display: flex;
   justify-content: center;
   align-items: center;
