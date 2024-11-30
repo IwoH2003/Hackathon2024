@@ -6,8 +6,7 @@ import { Login } from "./components/Login";
 import FindNewHobby from "./components/FindNewHobby";
 import UserProfile from "./components/UserProfile";
 import Footer from "./components/Footer";
-import UserProfile from "./components/UserProfile";
-import Footer from "./components/Footer";
+import { Register } from "./components/Register";
 
 export const AppContext = createContext();
 
@@ -27,6 +26,7 @@ function App() {
           <Route path="/about" element={<h1>About Page</h1>} />
           <Route path="/find-hobby" element={<FindNewHobby />} />
           <Route path="/user-profile" element={<UserProfile />} />
+          <Route path="/register" element={<Register />} />
           <Route
             path="/tutorial/photography"
             element={<h1>Fotografia Tutorial</h1>}

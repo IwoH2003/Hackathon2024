@@ -3,12 +3,11 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate instead of
 import { useFormik } from "formik";
 import { AppContext } from "../App";
 import "../styles/LoginPage.css";
-export function Login() {
+export function Register() {
   const navigate = useNavigate(); // Use useNavigate here
   const { logged, setLogged } = useContext(AppContext);
   const formik = useFormik({
     initialValues: {
-      email: "",
       username: "",
       password: "",
     },
@@ -20,7 +19,7 @@ export function Login() {
   });
 
   return (
-    <>
+    <div className="content-container">
       <form className="login-form" onSubmit={formik.handleSubmit}>
         <label htmlFor="Email">Email Address</label>
         <input
@@ -49,10 +48,10 @@ export function Login() {
 
         <button type="submit">Submit</button>
       </form>
-      <div className="content-container">
+      <div>
         <p>If you dont have an account go to register</p>
         <button onClick={() => navigate("/register")}>Register</button>
       </div>
-    </>
+    </div>
   );
 }
