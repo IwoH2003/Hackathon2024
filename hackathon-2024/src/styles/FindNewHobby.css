@@ -64,3 +64,27 @@ p {
 .learn-button:hover {
   background-color: #0056b3;
 }
+/* Final message */
+.end-message {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  color: black;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.image-wrapper {
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  transition:
+    opacity 1s ease-in-out,
+    transform 1s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
