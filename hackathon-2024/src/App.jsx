@@ -18,8 +18,10 @@ function App() {
   const [theme, setTheme] = useState("light");
   const [fontSize, setFontSize] = useState("medium");
   useEffect(() => {
-    console.log(`aktualny stan to: ${logged}`);
-  }, [logged]);
+    if (sessionStorage.getItem("accessKey")) {
+      setLogged(true);
+    }
+  }, []);
 
   useEffect(() => {
     document.body.className = ""; // Resetuje klasy

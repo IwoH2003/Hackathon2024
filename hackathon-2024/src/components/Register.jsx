@@ -2,26 +2,62 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate instead of useHistory
 import { useFormik } from "formik";
 import { AppContext } from "../App";
+import axios from "axios";
 import "../styles/LoginPage.css";
 export function Register() {
   const navigate = useNavigate(); // Use useNavigate here
   const { logged, setLogged } = useContext(AppContext);
   const formik = useFormik({
     initialValues: {
-      username: "",
+      firstName: "",
+      lastName: "",
+      email: "",
       password: "",
+      confirmPassword: "",
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-      setLogged(true);
-      navigate("/landingPage"); // Use navigate instead of history.push
+      console.log(values);
+      console.log(values.firstName);
+      console.log(typeof values.firstName);
+      console.log(typeof values.email);
+      axios
+        .post(
+          "https://hackaton2024api.azurewebsites.net/api/account/register",
+          {
+            firstName: values.firstName,
+            lastName: values.lastName,
+            email: values.email,
+            password: values.password,
+            confirmPassword: values.confirmPassword,
+          }
+        )
+        .then((response) => {
+          alert(response);
+        });
+      //   navigate("/landingPage");
     },
   });
 
   return (
     <div className="content-container">
       <form className="login-form" onSubmit={formik.handleSubmit}>
-        <label htmlFor="Email">Email Address</label>
+        <label htmlFor="firstName">FirstName</label>
+        <input
+          id="firstName"
+          name="firstName"
+          type="text"
+          onChange={formik.handleChange}
+          value={formik.values.firstName}
+        />
+        <label htmlFor="lastName">LastName</label>
+        <input
+          id="lastName"
+          name="lastName"
+          type="text"
+          onChange={formik.handleChange}
+          value={formik.values.lastName}
+        />
+        <label htmlFor="email">Email</label>
         <input
           id="email"
           name="email"
@@ -29,15 +65,7 @@ export function Register() {
           onChange={formik.handleChange}
           value={formik.values.email}
         />
-        <label htmlFor="Username">Username</label>
-        <input
-          id="username"
-          name="username"
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.username}
-        />
-        <label htmlFor="Password">Password</label>
+        <label htmlFor="password">Password</label>
         <input
           id="password"
           name="password"
@@ -45,7 +73,14 @@ export function Register() {
           onChange={formik.handleChange}
           value={formik.values.password}
         />
-
+        <label htmlFor="confirmPassword">ConfirmPassword</label>
+        <input
+          id="confirmPassword"
+          name="confirmPassword"
+          type="password"
+          onChange={formik.handleChange}
+          value={formik.values.confirmPassword}
+        />
         <button type="submit">Submit</button>
       </form>
       <div>
