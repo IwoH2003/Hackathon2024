@@ -5,7 +5,10 @@ function UserProfile() {
   const { userId } = useContext(AppContext);
   return (
     <>
-      <p>Users is {userId} heyy</p>
+      <div className="user-container">
+        <div>Hi username</div>
+        <img src={`url("/src/images/tokoniec.jpg")`} />
+      </div>
     </>
   );
 }
