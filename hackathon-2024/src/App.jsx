@@ -1,6 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { jwtDecode } from "jwt-decode"; // Import jwt-decode
 import Header from "./components/Header";
 import LandingPage from "./components/LandingPage";
 import { Login } from "./components/Login";
@@ -20,25 +19,10 @@ function App() {
   const [fontSize, setFontSize] = useState("medium");
 
   useEffect(() => {
-    // Check if the access token exists
     const jwt = sessionStorage.getItem("accessKey");
     if (jwt) {
       setLogged(true);
-
-      try {
-        // Decode the JWT
-        const decodedToken = jwtDecode(jwt);
-        console.log("Decoded JWT:", decodedToken);
-
-        // Optional: Update userId or other state from the token
-        if (decodedToken.userId) {
-          setUserId(decodedToken.userId);
-          console.log(userId);
-          console.log("CHUJJJJJ");
-        }
-      } catch (error) {
-        console.error("Invalid JWT:", error);
-      }
+      console.log(`jestem logged ${logged}`);
     }
   }, []);
 

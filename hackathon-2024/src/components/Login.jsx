@@ -8,7 +8,7 @@ import "../styles/LoginPage.css";
 
 export function Login() {
   const navigate = useNavigate(); // Use useNavigate here
-  const { setLogged, logged } = useContext(AppContext);
+  const { setLogged, logged, setUserId } = useContext(AppContext);
   useEffect(() => {
     if (logged) {
       navigate("/landingPage");
@@ -26,9 +26,9 @@ export function Login() {
           password: values.password,
         })
         .then((response) => {
-          console.log(response.data);
-          sessionStorage.setItem("accessKey", response.data); // Adjust based on API response
+          sessionStorage.setItem("accessKey", response.data.jwt); // Adjust based on API response
           setLogged(true);
+          setUserId(response.data.id);
           navigate("/landingPage");
         })
         .catch((error) => {
