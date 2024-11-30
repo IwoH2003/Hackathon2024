@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate instead of useHistory
 import { useFormik } from "formik";
 import { AppContext } from "../App";
@@ -8,8 +8,12 @@ import "../styles/LoginPage.css";
 
 export function Login() {
   const navigate = useNavigate(); // Use useNavigate here
-  const { setLogged } = useContext(AppContext);
-
+  const { setLogged, logged } = useContext(AppContext);
+  useEffect(() => {
+    if (logged) {
+      navigate("/landingPage");
+    }
+  });
   const formik = useFormik({
     initialValues: {
       email: "",

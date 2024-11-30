@@ -34,7 +34,7 @@ export function Register() {
         .then((response) => {
           alert(response);
         });
-      //   navigate("/landingPage");
+      navigate("/landingPage");
     },
   });
 
