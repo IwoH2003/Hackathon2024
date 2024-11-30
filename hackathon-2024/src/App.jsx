@@ -18,12 +18,16 @@ function App() {
   const [theme, setTheme] = useState("light");
   const [fontSize, setFontSize] = useState("medium");
 
-  useEffect(() => {
-    const jwt = sessionStorage.getItem("accessKey");
-    if (jwt) {
+  const ifLogged = (param) => {
+    if (param) {
       setLogged(true);
       console.log(`jestem logged ${logged}`);
     }
+  };
+
+  useEffect(() => {
+    const jwt = sessionStorage.getItem("accessKey");
+    ifLogged(jwt);
   }, []);
 
   useEffect(() => {
@@ -34,7 +38,7 @@ function App() {
       fontSize === "small" ? "14px" : fontSize === "large" ? "26px" : "16px"
     );
   }, [theme, fontSize]);
-
+  console.log(userId);
   return (
     <AppContext.Provider
       value={{
