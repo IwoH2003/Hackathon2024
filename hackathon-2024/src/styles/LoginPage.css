@@ -10,12 +10,14 @@ html {
 /* Login Container */
 .login-container {
   position: relative;
-  height: 100vh; /* Pełna wysokość okna przeglądarki */
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
   overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Background Video */
@@ -48,11 +50,22 @@ html {
   width: 90%;
   padding: 20px;
   border-radius: 8px;
+<<<<<<< HEAD
   background-color: rgba(255, 255, 255, 0.9); /* Lekka transparentność */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Delikatny cień */
   display: flex;
   flex-direction: column; /* Ustawienie elementów pionowo */
   gap: 15px; /* Odstępy między elementami */
+=======
+  background-color: var(
+    --form-background,
+    #fff
+  ); /* Background color for the form */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for form */
+  color: var(--form-text-color, #333);
+  font-size: var(--font-size, 16px); /* Dynamic font size */
+  text-align: left;
+>>>>>>> 26a0705dd77690bc5baaadd1ec551f54dee9aa29
 }
 
 /* Labels */
