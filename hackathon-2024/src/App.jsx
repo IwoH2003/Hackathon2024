@@ -8,7 +8,11 @@ import UserProfile from "./components/UserProfile";
 import Footer from "./components/Footer";
 import { Register } from "./components/Register";
 import Settings from "./components/Settings";
+import Ranking from "./components/Ranking";
 import "./index.css";
+import Cooking from "./components/tutorials/Cooking";
+import Drawing from "./components/tutorials/Drawing";
+import Photography from "./components/tutorials/Photography";
 
 export const AppContext = createContext();
 
@@ -18,10 +22,10 @@ function App() {
   const [theme, setTheme] = useState("light");
   const [fontSize, setFontSize] = useState("medium");
 
-  const ifLogged = (param) => {
-    if (param) {
+
+  useEffect(() => {
+    if (sessionStorage.getItem("accessKey")) {
       setLogged(true);
-      console.log(`jestem logged ${logged}`);
     }
   };
 
@@ -38,7 +42,7 @@ function App() {
       fontSize === "small" ? "14px" : fontSize === "large" ? "26px" : "16px"
     );
   }, [theme, fontSize]);
-  console.log(userId);
+
   return (
     <AppContext.Provider
       value={{
@@ -59,14 +63,12 @@ function App() {
         <Route path="/about" element={<h1>About Page</h1>} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/ranking" element={<Ranking />} />
         <Route path="/find-hobby" element={<FindNewHobby />} />
         <Route path="/user-profile" element={<UserProfile />} />
-        <Route
-          path="/tutorial/photography"
-          element={<h1>Fotografia Tutorial</h1>}
-        />
-        <Route path="/tutorial/drawing" element={<h1>Rysowanie Tutorial</h1>} />
-        <Route path="/tutorial/cooking" element={<h1>Gotowanie Tutorial</h1>} />
+        <Route path="/tutorial/drawing" element={<Drawing />} />
+        <Route path="/tutorial/cooking" element={<Cooking />} />
+        <Route path="/tutorial/photography" element={<Photography />} />
       </Routes>
       <Footer />
     </AppContext.Provider>

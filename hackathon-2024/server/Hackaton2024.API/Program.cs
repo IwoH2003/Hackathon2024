@@ -9,6 +9,8 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Hackaton2024.API.Middleware;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
+using Hackaton2024.API;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,11 +44,15 @@ builder.Services
     .AddFluentValidation();
 
 builder.Services.AddDbContext<HackatonDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DbConnString")));
-
+builder.Services.AddScoped<Seeder>();
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserContextService, UserContextService>();
 
 builder.Services.AddScoped<ErrorHandlingMiddleware>();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
@@ -85,6 +91,9 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 app.UseCors("FrontEndClient");
+var scope = app.Services.CreateScope();
+var seeder = scope.ServiceProvider.GetRequiredService<Seeder>();
+await seeder.Seed();
 app.UseMiddleware<ErrorHandlingMiddleware>();
 
 app.UseSwagger();

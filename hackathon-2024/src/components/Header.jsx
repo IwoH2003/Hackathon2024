@@ -16,7 +16,7 @@ function Header() {
               <Link to="/settings">Ustawienia</Link>
             </li>
             <li className="nav-item">
-              <a href="#services">Ranking</a>
+              <Link to="/ranking">Ranking</Link>
             </li>
             <li className="nav-item">
               <Link to="/user-profile">Profil</Link>

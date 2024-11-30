@@ -30,49 +30,51 @@ function FindNewHobby() {
 
   return (
     <div className="find-new-hobby">
-      <h1>Znajdź nowe hobby</h1>
-      <div className="hobby-container">
-        {remainingHobbies.length > 0 ? (
-          <div
-            className={`image-wrapper ${isRevealing ? "fade-out" : "fade-in"}`}
-            style={{
-              backgroundImage: `url(${
-                selectedHobby
-                  ? selectedHobby.image
-                  : "/src/images/questionmarks.jpg" // Prezent image
-              })`,
-            }}
-          />
-        ) : (
-          <div
-            className="image-wrapper"
-            style={{
-              backgroundImage: `url("/src/images/tokoniec.jpg")`, // Final image
-            }}
-          >
-            <p className="end-message">
-              Gratulacje! Wylosowałeś wszystkie hobby!
-            </p>
-          </div>
-        )}
-        {selectedHobby && remainingHobbies.length > 0 && (
-          <>
-            <h2>{selectedHobby.name}</h2>
-            <p>{selectedHobby.description}</p>
-            <button
-              className="learn-button"
-              onClick={() => navigate(selectedHobby.tutorialPath)}
+      <div className="content-box">
+        <h1>Znajdź nowe hobby</h1>
+        <div className="hobby-container">
+          {remainingHobbies.length > 0 ? (
+            <div
+              className={`image-wrapper ${isRevealing ? "fade-out" : "fade-in"}`}
+              style={{
+                backgroundImage: `url(${
+                  selectedHobby
+                    ? selectedHobby.image
+                    : "/src/images/questionmarks.jpg"
+                })`,
+              }}
+            />
+          ) : (
+            <div
+              className="image-wrapper"
+              style={{
+                backgroundImage: `url("/src/images/tokoniec.jpg")`,
+              }}
             >
-              Zacznij się uczyć
-            </button>
-          </>
+              <p className="end-message">
+                Wylosowałeś wszystkie dostępne hobby!
+              </p>
+            </div>
+          )}
+          {selectedHobby && remainingHobbies.length > 0 && (
+            <>
+              <h2>{selectedHobby.name}</h2>
+              <p>{selectedHobby.description}</p>
+              <button
+                className="randomize-button"
+                onClick={() => navigate(selectedHobby.tutorialPath)}
+              >
+                Zacznij się uczyć
+              </button>
+            </>
+          )}
+        </div>
+        {remainingHobbies.length > 0 && (
+          <button className="randomize-button" onClick={handleRandomizeHobby}>
+            Losuj hobby
+          </button>
         )}
       </div>
-      {remainingHobbies.length > 0 && (
-        <button className="randomize-button" onClick={handleRandomizeHobby}>
-          Losuj hobby
-        </button>
-      )}
     </div>
   );
 }

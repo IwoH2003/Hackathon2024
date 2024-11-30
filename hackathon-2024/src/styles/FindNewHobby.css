@@ -1,145 +1,205 @@
-/* General styles */
+/* General Reset */
 body,
 html {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  font-size: var(--font-size, 16px); /* Domyślny rozmiar czcionki */
+  font-size: var(--font-size, 16px); /* Default font size */
 }
 
 /* Find New Hobby Section */
 .find-new-hobby {
+  position: relative;
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../images/backgroundhobby.jpg"); /* Background image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+/* Overlay for dimming effect */
+.find-new-hobby::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dimming effect */
+  z-index: -1;
+}
+
+/* Content Box */
+.content-box {
+  z-index: 1;
+  max-width: 800px;
   text-align: center;
-  min-height: 90vh;
-  padding: 20px;
-  font-size: var(--font-size); /* Dziedziczenie dynamicznego rozmiaru */
+  padding: 40px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  color: var(--content-color, #333);
 }
 
-/* High Contrast adjustments */
-body.high-contrast .find-new-hobby {
-  background-color: #000000;
-  color: #ffff00;
+/* Title */
+/* Title */
+.content-box h1 {
+  font-size: calc(1.6 * var(--font-size)); /* Dynamic font size */
+  margin-bottom: 20px;
+  color: var(--title-color, #333); /* Dynamic color */
 }
 
+/* Light Mode */
+body.light .content-box h1 {
+  --title-color: #333; /* Default dark color for light mode */
+}
+
+/* Dark Mode */
+body.dark .content-box h1 {
+  --title-color: #f9f9f9; /* Light text for dark mode */
+}
+
+/* High Contrast Mode */
+body.high-contrast .content-box h1 {
+  --title-color: #ffff00; /* Yellow text for high contrast mode */
+}
+
+/* Hobby Container */
 .hobby-container {
   margin: 20px auto;
-  max-width: 600px;
   text-align: center;
 }
 
-/* Wrapper for the image */
+/* Image Wrapper */
 .image-wrapper {
   width: 100%;
-  height: 300px;
+  max-width: 600px; /* Max width for container */
+  height: calc(600px / 16 * 9); /* 16:9 Aspect Ratio */
   background-size: cover;
   background-position: center;
   border-radius: 8px;
-  position: relative;
-  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  margin: 20px auto; /* Center horizontally */
   transition:
     opacity 1s ease-in-out,
     transform 1s ease-in-out;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* High Contrast adjustments for image wrapper */
-body.high-contrast .image-wrapper {
-  border: 3px solid #ffff00;
-  box-shadow: 0 4px 6px rgba(255, 255, 0, 0.8);
-}
-
-/* Animation for fading out */
-.image-wrapper.fade-out {
-  opacity: 0;
-  transform: scale(0.9);
-}
-
-/* Animation for fading in */
-.image-wrapper.fade-in {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Headings */
-h2 {
-  font-size: calc(1.5 * var(--font-size)); /* Dynamic font size for headings */
-  margin-top: 20px;
-}
-
-/* High Contrast adjustments for h2 */
-body.high-contrast h2 {
-  color: #ffff00;
-}
-
-/* Paragraphs */
-p {
-  font-size: calc(1 * var(--font-size)); /* Dynamic font size for paragraphs */
-  margin: 10px 0 20px;
-}
-
-/* High Contrast adjustments for paragraphs */
-body.high-contrast p {
-  color: #ffff00;
 }
 
 /* Buttons */
 .randomize-button,
 .learn-button {
-  background-color: #007bff;
-  color: white;
   border: none;
-  padding: calc(0.8 * var(--font-size)) calc(1.2 * var(--font-size)); /* Dynamic padding */
-  font-size: calc(1 * var(--font-size)); /* Dynamic font size */
+  padding: calc(0.8 * var(--font-size)) calc(1.2 * var(--font-size));
+  font-size: calc(1 * var(--font-size));
+  background-color: var(--button-background, #007bff);
+  color: var(--button-text-color, white);
   border-radius: 4px;
   cursor: pointer;
   transition:
     background-color 0.3s ease,
     transform 0.2s ease;
+  margin-top: 20px;
 }
 
-/* Light Mode Button Hover */
-body.light .randomize-button:hover,
-body.light .learn-button:hover {
-  background-color: #0056b3;
-  color: white;
-  transform: scale(1.05); /* Subtle scaling effect */
+.randomize-button:hover,
+.learn-button:hover {
+  background-color: var(--button-hover-color, #0056b3);
+  transform: scale(1.05); /* Slight scaling effect */
 }
 
-/* Dark Mode Button Hover */
-body.dark .randomize-button:hover,
-body.dark .learn-button:hover {
-  background-color: #64b5f6;
-  color: #121212;
-  transform: scale(1.05); /* Subtle scaling effect */
+/* High Contrast Mode */
+body.high-contrast .find-new-hobby::before {
+  background-color: rgba(0, 0, 0, 0.9); /* Stronger dimming */
 }
 
-/* High Contrast Button Hover */
-body.high-contrast .randomize-button:hover,
-body.high-contrast .learn-button:hover {
-  background-color: #ffcc00;
-  color: #000000;
-  transform: scale(1.05); /* Subtle scaling effect */
+body.high-contrast .content-box {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #ffff00;
+  border: 2px solid #ffff00;
 }
 
-/* High Contrast adjustments for buttons */
+body.high-contrast .image-wrapper {
+  border: 3px solid #ffff00;
+}
+
 body.high-contrast .randomize-button,
 body.high-contrast .learn-button {
   background-color: #ffff00;
   color: #000000;
 }
 
-/* Final message */
-.end-message {
-  position: absolute;
-  bottom: 20px;
-  width: 100%;
-  text-align: center;
-  color: black;
-  font-size: calc(1.2 * var(--font-size)); /* Dynamic font size */
-  font-weight: bold;
+body.high-contrast .randomize-button:hover,
+body.high-contrast .learn-button:hover {
+  background-color: #ffcc00;
 }
 
-/* High Contrast adjustments for end message */
-body.high-contrast .end-message {
-  color: #ffff00;
+/* Light Mode */
+body.light .find-new-hobby::before {
+  background-color: rgba(255, 255, 255, 0.5); /* Light mode overlay */
+}
+
+body.light .content-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #333;
+}
+
+body.light .randomize-button,
+body.light .learn-button {
+  background-color: #007bff;
+  color: white;
+}
+
+body.light .randomize-button:hover,
+body.light .learn-button:hover {
+  background-color: #0056b3;
+}
+
+/* Dark Mode */
+body.dark .find-new-hobby::before {
+  background-color: rgba(0, 0, 0, 0.7); /* Dark mode overlay */
+}
+
+body.dark .content-box {
+  background-color: rgba(30, 30, 30, 0.8);
+  color: #f9f9f9;
+}
+
+body.dark .randomize-button,
+body.dark .learn-button {
+  background-color: #90caf9;
+  color: #121212;
+}
+
+body.dark .randomize-button:hover,
+body.dark .learn-button:hover {
+  background-color: #64b5f6;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .content-box {
+    padding: 20px;
+  }
+
+  .randomize-button,
+  .learn-button {
+    padding: 10px 20px;
+    font-size: calc(0.9 * var(--font-size));
+  }
+}
+
+@media (max-width: 480px) {
+  .content-box {
+    padding: 15px;
+  }
+
+  .randomize-button,
+  .learn-button {
+    padding: 8px 15px;
+    font-size: calc(0.8 * var(--font-size));
+  }
 }

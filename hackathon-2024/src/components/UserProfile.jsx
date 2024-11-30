@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { AppContext } from "../App";
 import "../styles/UserProfiles.css";
+import camera from "../images/camera.jpg";
 
 function UserProfile() {
   const { username } = useContext(AppContext); // Assume `username` exists in context

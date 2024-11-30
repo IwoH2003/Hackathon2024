@@ -10,6 +10,6 @@ namespace Hackaton2024.API.Entities
         public string LastName { get; set; }
         public string Email { get; set; }
         public string PasswordHash { get; set; }
-        public List<Activity> Activities { get; set; }
+        public ICollection<UserActivity> UserActivities { get; set; }
     }
 }

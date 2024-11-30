@@ -1,0 +1,134 @@
+/* General Styles */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  font-size: var(--font-size, 16px);
+}
+
+/* Tutorial Page */
+.tutorial-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("/src/images/tutorialbackground.jpg");
+  background-size: cover; /* Ensure the background covers the entire page */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent repeating the background */
+  color: var(--text-color, #333);
+  padding: 20px;
+}
+
+/* Transparent Box */
+.tutorial-container {
+  max-width: 800px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8); /* Transparent box */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Title */
+.title {
+  font-size: calc(1.6 * var(--font-size));
+  margin-bottom: 20px;
+  color: var(--title-color, #333);
+}
+
+/* Video Container */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  margin-bottom: 20px;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+}
+
+/* Description */
+.description {
+  font-size: calc(1.2 * var(--font-size));
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* Steps */
+.steps {
+  text-align: left;
+  margin: 20px 0;
+  padding: 0;
+  list-style-type: disc;
+}
+
+.steps li {
+  margin-bottom: 10px;
+  font-size: calc(1 * var(--font-size));
+}
+
+/* Learned Button */
+.learned-button {
+  background-color: var(--button-bg-color, #007bff);
+  color: var(--button-text-color, white);
+  border: none;
+  padding: calc(0.8 * var(--font-size)) calc(1.2 * var(--font-size));
+  font-size: calc(1 * var(--font-size));
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+}
+
+.learned-button:hover {
+  background-color: var(--button-hover-bg-color, #0056b3);
+  transform: scale(1.05);
+}
+
+/* Light Mode */
+body.light .tutorial-page {
+  --text-color: #333;
+  --title-color: #333;
+  --button-bg-color: #007bff;
+  --button-text-color: white;
+  --button-hover-bg-color: #0056b3;
+}
+
+/* Dark Mode */
+body.dark .tutorial-page {
+  --text-color: #e0e0e0;
+  --title-color: #f9f9f9;
+  --button-bg-color: #90caf9;
+  --button-text-color: #121212;
+  --button-hover-bg-color: #64b5f6;
+}
+
+body.dark .tutorial-container {
+  background-color: rgba(30, 30, 30, 0.8);
+  color: #f9f9f9;
+}
+
+/* High Contrast Mode */
+body.high-contrast .tutorial-page {
+  --text-color: #ffff00;
+  --title-color: #ffff00;
+  --button-bg-color: #ffff00;
+  --button-text-color: #000;
+  --button-hover-bg-color: #ffcc00;
+}
+
+body.high-contrast .tutorial-container {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #ffff00;
+  border: 2px solid #ffff00;
+}
