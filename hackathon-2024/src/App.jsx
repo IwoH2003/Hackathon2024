@@ -32,9 +32,6 @@ function App() {
 
   return (
     <>
-<<<<<<< HEAD
-      <AppContext.Provider value={{ userId, setUserId, logged, setLogged }}>
-=======
       <AppContext.Provider
         value={{
           userId,
@@ -47,7 +44,6 @@ function App() {
           setFontSize,
         }}
       >
->>>>>>> origin
         <Header />
         <Routes>
           <Route path="/" element={<Login />} />
