@@ -32,7 +32,22 @@ function App() {
 
   return (
     <>
+<<<<<<< HEAD
       <AppContext.Provider value={{ userId, setUserId, logged, setLogged }}>
+=======
+      <AppContext.Provider
+        value={{
+          userId,
+          setUserId,
+          logged,
+          setLogged,
+          theme,
+          setTheme,
+          fontSize,
+          setFontSize,
+        }}
+      >
+>>>>>>> origin
         <Header />
         <Routes>
           <Route path="/" element={<Login />} />

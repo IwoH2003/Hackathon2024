@@ -4,6 +4,8 @@
   padding: 20px 0;
   text-align: center;
   font-size: 0.9rem;
+  margin-top: 20vh;
+  min-height: 90vh;
 }
 
 /* High Contrast adjustments */

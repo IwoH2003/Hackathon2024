@@ -80,7 +80,7 @@ export function Register() {
           type="password"
           onChange={formik.handleChange}
           value={formik.values.confirmPassword}
-        />
+        ></input>
         <button type="submit">Submit</button>
       </form>
       <div>
