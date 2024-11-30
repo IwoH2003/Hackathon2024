@@ -5,6 +5,7 @@ html {
   padding: 0;
   font-family: Arial, Helvetica, sans-serif;
   height: 100%;
+  font-size: var(--font-size, 16px); /* Dynamiczna czcionka */
 }
 
 /* Login Container */
@@ -63,7 +64,7 @@ html {
 /* Labels */
 .login-form label {
   font-weight: bold;
-  font-size: 14px;
+  font-size: inherit; /* Dynamiczny rozmiar czcionki */
   margin-bottom: 5px;
 }
 
@@ -71,9 +72,11 @@ html {
 .login-form input {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--input-border-color, #ccc);
   border-radius: 5px;
-  font-size: 14px;
+  font-size: inherit; /* Dynamiczny rozmiar czcionki */
+  background-color: var(--input-background, #ffffff);
+  color: var(--input-text-color, #333);
   box-sizing: border-box; /* Uwzględnia padding w rozmiarze pola */
 }
 
@@ -81,17 +84,17 @@ html {
 .login-form button {
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
-  color: white;
+  background-color: var(--button-background, #007bff);
+  color: var(--button-text-color, white);
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: inherit; /* Dynamiczny rozmiar czcionki */
   transition: background-color 0.3s ease;
 }
 
 .login-form button:hover {
-  background-color: #0056b3;
+  background-color: var(--button-hover-color, #0056b3);
 }
 
 /* Register Section */
@@ -100,20 +103,22 @@ html {
   z-index: 1;
   margin-top: 20px;
   text-align: center;
+  font-size: inherit; /* Dynamiczny rozmiar czcionki */
 }
 
 .content-container button {
   background-color: transparent;
-  border: 2px solid #007bff;
-  color: #007bff;
+  border: 2px solid var(--button-background, #007bff);
+  color: var(--button-background, #007bff);
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
+  font-size: inherit; /* Dynamiczny rozmiar czcionki */
   transition: all 0.3s ease;
 }
 
 .content-container button:hover {
-  background-color: #007bff;
+  background-color: var(--button-background, #007bff);
   color: white;
 }
 
@@ -127,8 +132,53 @@ html {
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
   text-align: center;
-  font-size: 14px;
+  font-size: inherit; /* Dynamiczny rozmiar czcionki */
   z-index: 1;
+}
+
+/* Light Mode */
+body.light .login-form {
+  --form-background: rgba(255, 255, 255, 0.9);
+  --input-border-color: #ccc;
+  --input-background: #ffffff;
+  --input-text-color: #333;
+  --button-background: #007bff;
+  --button-text-color: white;
+  --button-hover-color: #0056b3;
+}
+
+body.light .content-container button {
+  --button-background: #007bff;
+}
+
+/* Dark Mode */
+body.dark .login-form {
+  --form-background: rgba(30, 30, 30, 0.9);
+  --input-border-color: #444;
+  --input-background: #2c2c2c;
+  --input-text-color: #e0e0e0;
+  --button-background: #90caf9;
+  --button-text-color: #121212;
+  --button-hover-color: #64b5f6;
+}
+
+body.dark .content-container button {
+  --button-background: #90caf9;
+}
+
+/* High Contrast Mode */
+body.high-contrast .login-form {
+  --form-background: #000;
+  --input-border-color: #ffff00;
+  --input-background: #000;
+  --input-text-color: #ffff00;
+  --button-background: #ffff00;
+  --button-text-color: #000;
+  --button-hover-color: #ffcc00;
+}
+
+body.high-contrast .content-container button {
+  --button-background: #ffff00;
 }
 
 /* Responsive Adjustments */
@@ -140,12 +190,12 @@ html {
 
   .login-form button,
   .login-form input {
-    font-size: 14px;
+    font-size: calc(var(--font-size, 16px) * 0.875); /* Zmniejszenie czcionki */
     padding: 8px;
   }
 
   .content-container button {
-    font-size: 14px;
+    font-size: calc(var(--font-size, 16px) * 0.875);
     padding: 8px;
   }
 }
@@ -158,12 +208,14 @@ html {
 
   .login-form button,
   .login-form input {
-    font-size: 12px;
+    font-size: calc(
+      var(--font-size, 16px) * 0.75
+    ); /* Jeszcze mniejsza czcionka */
     padding: 6px;
   }
 
   .content-container button {
-    font-size: 12px;
+    font-size: calc(var(--font-size, 16px) * 0.75);
     padding: 6px;
   }
 }

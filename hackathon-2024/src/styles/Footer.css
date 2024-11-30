@@ -1,11 +1,11 @@
 /* General Footer Styles */
 .footer {
-  position: relative; /* Ustawia stopkę względem strony */
+  position: relative;
   padding: 20px 0;
   text-align: center;
-  font-size: 0.9rem;
-  background-color: var(--footer-bg, #f8f8f8); /* Domyślne jasne tło */
-  color: var(--footer-color, #333); /* Domyślny ciemny tekst */
+  font-size: var(--font-size, 16px); /* Dynamiczny rozmiar czcionki */
+  background-color: var(--footer-bg, #f8f8f8);
+  color: var(--footer-color, #333);
 }
 
 /* Footer Container */
@@ -15,14 +15,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px; /* Odstęp między elementami */
+  gap: 10px;
 }
 
 /* Footer Text */
 .footer p {
   margin: 0;
-  font-size: 14px;
-  color: inherit; /* Kolor dziedziczony z rodzica */
+  font-size: inherit; /* Dziedziczy dynamiczny rozmiar czcionki */
+  color: inherit;
 }
 
 /* Footer Links */
@@ -31,7 +31,7 @@
   padding: 0;
   display: flex;
   gap: 15px;
-  justify-content: center; /* Środkowanie linków */
+  justify-content: center;
 }
 
 .footer-links li {
@@ -39,15 +39,15 @@
 }
 
 .footer-links a {
-  color: inherit; /* Kolor dziedziczony z rodzica */
+  color: inherit;
   text-decoration: none;
-  font-size: 14px;
+  font-size: inherit; /* Dziedziczy dynamiczny rozmiar czcionki */
   transition: color 0.3s ease;
 }
 
 /* Hover Effects */
 .footer-links a:hover {
-  color: var(--footer-link-hover, #007bff); /* Kolor linków po najechaniu */
+  color: var(--footer-link-hover, #007bff);
 }
 
 /* Light Mode */
@@ -79,7 +79,7 @@ body.high-contrast .footer {
   }
 
   .footer-links {
-    flex-wrap: wrap; /* Zawijanie linków w wiersze */
+    flex-wrap: wrap;
     gap: 10px;
   }
 }
