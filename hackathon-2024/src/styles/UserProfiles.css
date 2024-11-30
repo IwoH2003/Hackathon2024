@@ -1,13 +1,14 @@
 .user-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
+  margin-top: 50px;
 }
-<<<<<<< HEAD
-=======
+
 .image-wrapper {
-  width: 100%;
+  width: 300px;
   height: 300px;
   background-size: cover;
   background-position: center;
@@ -19,4 +20,7 @@
     transform 1s ease-in-out;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
->>>>>>> origin
+
+.image-wrapper:hover {
+  transform: scale(1.05);
+}

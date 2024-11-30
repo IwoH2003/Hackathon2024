@@ -50,6 +50,7 @@ function App() {
         <Route path="/landingPage" element={<LandingPage />} />
         <Route path="/about" element={<h1>About Page</h1>} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/register" element={<Register />} />
 
         <Route path="/find-hobby" element={<FindNewHobby />} />
         <Route path="/user-profile" element={<UserProfile />} />
