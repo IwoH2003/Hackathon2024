@@ -6,4 +6,5 @@ public interface IAccountService
 {
     Task RegisterUser(RegisterUserDTO dto);
     Task<string> GenerateJwt(LoginUserDTO dto);
+    Task<int> GetUserId(LoginUserDTO dto);
 }

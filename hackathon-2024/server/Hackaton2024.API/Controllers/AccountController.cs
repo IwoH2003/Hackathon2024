@@ -25,9 +25,11 @@ public class AccountController : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<ActionResult> Login([FromBody] LoginUserDTO login)
+    public async Task<ActionResult<LoginResultDTO>> Login([FromBody] LoginUserDTO login)
     {
         string token = await _service.GenerateJwt(login);
-        return Ok(token);
+        int id = await _service.GetUserId(login);
+        var result = new LoginResultDTO() { Id = id, JWT = token };
+        return Ok(result);
     }
 }

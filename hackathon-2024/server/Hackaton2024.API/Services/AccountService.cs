@@ -73,4 +73,17 @@ public class AccountService : IAccountService
         var tokenHandler = new JwtSecurityTokenHandler();
         return tokenHandler.WriteToken(token);
     }
+
+    public async Task<int> GetUserId(LoginUserDTO dto)
+    {
+        var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
+
+        if (user is null)
+        {
+            throw new BadRequestException("Invalid name or password");
+        }
+
+        return user.Id;
+
+    }
 }
