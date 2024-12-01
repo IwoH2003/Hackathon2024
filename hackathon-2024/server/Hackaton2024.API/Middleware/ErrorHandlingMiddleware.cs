@@ -10,10 +10,15 @@ namespace Hackaton2024.API.Middleware
             {
                 await next.Invoke(context);
             }
-            catch (BadRequestException badRequet)
+            catch (BadRequestException badRequest)
             {
                 context.Response.StatusCode = 400;
-                await context.Response.WriteAsync(badRequet.Message);
+                await context.Response.WriteAsync(badRequest.Message);
+            }
+            catch (NotFoundException notFound)
+            {
+                context.Response.StatusCode = 404;
+                await context.Response.WriteAsync(notFound.Message);
             }
             catch (Exception)
             {

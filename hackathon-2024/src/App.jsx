@@ -46,7 +46,7 @@ function App() {
       //     currentUser.current = data;
       //   });
     }
-  }, []);
+  });
 
   useEffect(() => {
     document.body.className = ""; // Reset classes

@@ -24,33 +24,7 @@ namespace Hackaton2024.API
                     await _dbContext.Activities.AddRangeAsync(activities);
                     await _dbContext.SaveChangesAsync();
                 }
-
-                SeedUser();
             }
-        }
-
-        private void SeedUser()
-        {
-            var user = new User()
-            {
-                FirstName = "Test",
-                LastName = "Test",
-                Email = "test@test.pl"
-            };
-
-            var running = _dbContext.Activities.FirstOrDefault(a => a.Name == "Running");
-            var reading = _dbContext.Activities.FirstOrDefault(a => a.Name == "Reading");
-
-            user.UserActivities = new List<UserActivity>
-            {
-                new UserActivity { Activity = running },
-                new UserActivity { Activity = reading }
-            };
-
-            user.PasswordHash = "";
-
-            _dbContext.Users.Add(user);
-            _dbContext.SaveChanges();
         }
 
         private IEnumerable<Activity> SeedActivities()
