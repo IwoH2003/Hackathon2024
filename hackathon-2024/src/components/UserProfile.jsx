@@ -4,8 +4,8 @@ import "../styles/UserProfiles.css";
 import camera from "../images/camera.jpg";
 
 function UserProfile() {
-  const { username } = useContext(AppContext); // Assume `username` exists in context
-
+  const { username, currentUser } = useContext(AppContext); // Assume `username` exists in context
+  console.log(`Tuuuutej ${currentUser.firstName}`);
   return (
     <div className="user-container">
       {/* Top Section: User Photo and Summary */}
@@ -17,7 +17,7 @@ function UserProfile() {
           }}
         ></div>
         <div className="users-summary">
-          <h2>Welcome, {username || "User"}!</h2>
+          <h2>Welcome,{currentUser} </h2>
           <p>
             Here's your summary. You can update your profile and check your
             activities below.

@@ -13,24 +13,31 @@ import "./index.css";
 import Cooking from "./components/tutorials/Cooking";
 import Drawing from "./components/tutorials/Drawing";
 import Photography from "./components/tutorials/Photography";
+import axios from "axios";
 
 export const AppContext = createContext();
 
 function App() {
   const [logged, setLogged] = useState(false);
   const [userId, setUserId] = useState(1);
+  const [currentUser, setCurrentUser] = useState();
   const [theme, setTheme] = useState("light");
   const [fontSize, setFontSize] = useState("medium");
 
   useEffect(() => {
     if (sessionStorage.getItem("accessKey")) {
       setLogged(true);
+      axios
+        .get(`https://hackaton2024api.azurewebsites.net/api/users/${userId}`)
+        .then((response) => {
+          console.log(response);
+          console.log(response.data);
+          const data = { ...response.data };
+          console.log("hejjjj", data);
+          console.log(`moje id to ${userId}`);
+          setCurrentUser(data);
+        });
     }
-  });
-
-  useEffect(() => {
-    const jwt = sessionStorage.getItem("accessKey");
-    ifLogged(jwt);
   }, []);
 
   useEffect(() => {
@@ -41,7 +48,6 @@ function App() {
       fontSize === "small" ? "14px" : fontSize === "large" ? "26px" : "16px"
     );
   }, [theme, fontSize]);
-
   return (
     <AppContext.Provider
       value={{
@@ -53,6 +59,8 @@ function App() {
         setTheme,
         fontSize,
         setFontSize,
+        currentUser,
+        setCurrentUser,
       }}
     >
       <Header />
