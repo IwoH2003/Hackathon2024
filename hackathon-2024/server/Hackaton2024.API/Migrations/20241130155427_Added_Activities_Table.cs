@@ -9,7 +9,7 @@ namespace Hackaton2024.API.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Activity",
+                name: "ActivityName",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -29,14 +29,14 @@ namespace Hackaton2024.API.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Activity_UserId",
-                table: "Activity",
+                table: "ActivityName",
                 column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Activity");
+                name: "ActivityName");
         }
     }
 }

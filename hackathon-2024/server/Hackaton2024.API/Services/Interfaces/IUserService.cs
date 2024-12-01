@@ -6,5 +6,6 @@ namespace Hackaton2024.API.Services.Interfaces
     public interface IUserService
     {
         Task<UserDTO> GetUser(int userId);
+        Task AddPoints(int userId, ChangeStageDTO stageDTO);
     }
 }

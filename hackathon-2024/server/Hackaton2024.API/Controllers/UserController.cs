@@ -19,10 +19,17 @@ namespace Hackaton2024.API.Controllers
         }
 
         [HttpGet("{userId}")]
-        public async Task<ActionResult<UserDTO>> GetActivities([FromRoute] int userId)
+        public async Task<ActionResult<UserDTO>> GetUser([FromRoute] int userId)
         {
             var user = await _userService.GetUser(userId);
             return Ok(user);
+        }
+
+        [HttpPost("{userId}/points")]
+        public async Task<ActionResult> AddPoints([FromRoute] int userId, [FromBody] ChangeStageDTO stageDTO)
+        {
+            await _userService.AddPoints(userId, stageDTO);
+            return Ok();
         }
     }
 }
