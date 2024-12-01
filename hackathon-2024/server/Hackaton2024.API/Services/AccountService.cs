@@ -38,6 +38,14 @@ public class AccountService : IAccountService
 
         newUser.PasswordHash = _passwordHasher.HashPassword(newUser, dto.Password);
 
+        var activities = await _dbContext.Activities.ToListAsync();
+
+        newUser.UserActivities = activities.Select(a => new UserActivity
+        {
+            ActivityId = a.Id,
+            User = newUser
+        }).ToList();
+
         await _dbContext.Users.AddAsync(newUser);
         await _dbContext.SaveChangesAsync();
     }

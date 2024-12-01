@@ -3,5 +3,6 @@
     public class ActivityDTO
     {
         public string Name { get; set; }
+        public ActivityStage Stage { get; set; }
     }
 }

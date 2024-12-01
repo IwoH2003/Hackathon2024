@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Hackaton2024.API.Entities;
+using Hackaton2024.API.Exceptions;
 using Hackaton2024.API.Models.DTOs;
 using Hackaton2024.API.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -32,16 +33,22 @@ namespace Hackaton2024.API.Services
 
             foreach (var activity in activities)
             {
-                activitiesDtos.Add(new ActivityDTO() { Name = activity.Name });
+                activitiesDtos.Add(new ActivityDTO() { Name = activity.Name, Stage = activity.Stage });
             }
 
             var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == userId);
+
+            if (user is null)
+            {
+                throw new NotFoundException("User not found");
+            }
 
             var userDto = new UserDTO()
             {
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
+                Points = user.Points,
                 Activities = activitiesDtos
             };
             
