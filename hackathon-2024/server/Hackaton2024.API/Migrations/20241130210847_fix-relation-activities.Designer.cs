@@ -23,7 +23,7 @@ namespace Hackaton2024.API.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Hackaton2024.API.Entities.Activity", b =>
+            modelBuilder.Entity("Hackaton2024.API.Entities.ActivityName", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -138,7 +138,7 @@ namespace Hackaton2024.API.Migrations
 
             modelBuilder.Entity("Hackaton2024.API.Entities.UserActivity", b =>
                 {
-                    b.HasOne("Hackaton2024.API.Entities.Activity", "Activity")
+                    b.HasOne("Hackaton2024.API.Entities.ActivityName", "ActivityName")
                         .WithMany("UserActivities")
                         .HasForeignKey("ActivityId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -150,12 +150,12 @@ namespace Hackaton2024.API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Activity");
+                    b.Navigation("ActivityName");
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Hackaton2024.API.Entities.Activity", b =>
+            modelBuilder.Entity("Hackaton2024.API.Entities.ActivityName", b =>
                 {
                     b.Navigation("UserActivities");
                 });

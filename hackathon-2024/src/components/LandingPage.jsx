@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import skateboard from "../video/skateboard.mp4"; // Import wideo jako tło
 import { AppContext } from "../App";
 import { useContext, useEffect } from "react";
+
 import axios from "axios";
 
 function LandingPage() {

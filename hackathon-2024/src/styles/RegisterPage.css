@@ -121,6 +121,7 @@ html {
   color: white;
 }
 
+
 /* Footer */
 .footer {
   position: absolute;
@@ -134,7 +135,6 @@ html {
   font-size: inherit; /* Dynamic font size */
   z-index: 1;
 }
-
 /* Light Mode */
 body.light .register-form {
   --form-background: rgba(255, 255, 255, 0.9);

@@ -1,6 +1,9 @@
 /* General Footer Styles */
 .footer {
-  position: relative;
+  position: absolute; /* Pozycjonowanie względem rodzica (.page-wrapper) */
+  bottom: 0;
+  left: 0;
+  width: 100%; /* Rozciągnięcie na całą szerokość */
   padding: 20px 0;
   text-align: center;
   font-size: var(--font-size, 16px); /* Dynamiczny rozmiar czcionki */

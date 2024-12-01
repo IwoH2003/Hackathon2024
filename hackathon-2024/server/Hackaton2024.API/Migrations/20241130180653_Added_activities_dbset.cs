@@ -10,14 +10,14 @@ namespace Hackaton2024.API.Migrations
         {
             migrationBuilder.DropForeignKey(
                 name: "FK_Activity_Users_UserId",
-                table: "Activity");
+                table: "ActivityName");
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Activity",
-                table: "Activity");
+                table: "ActivityName");
 
             migrationBuilder.RenameTable(
-                name: "Activity",
+                name: "ActivityName",
                 newName: "Activities");
 
             migrationBuilder.RenameIndex(
@@ -50,21 +50,21 @@ namespace Hackaton2024.API.Migrations
 
             migrationBuilder.RenameTable(
                 name: "Activities",
-                newName: "Activity");
+                newName: "ActivityName");
 
             migrationBuilder.RenameIndex(
                 name: "IX_Activities_UserId",
-                table: "Activity",
+                table: "ActivityName",
                 newName: "IX_Activity_UserId");
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_Activity",
-                table: "Activity",
+                table: "ActivityName",
                 column: "Id");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Activity_Users_UserId",
-                table: "Activity",
+                table: "ActivityName",
                 column: "UserId",
                 principalTable: "Users",
                 principalColumn: "Id");

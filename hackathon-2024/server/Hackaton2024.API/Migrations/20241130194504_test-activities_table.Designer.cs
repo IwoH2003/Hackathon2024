@@ -24,7 +24,7 @@ namespace Hackaton2024.API.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Hackaton2024.API.Entities.Activity", b =>
+            modelBuilder.Entity("Hackaton2024.API.Entities.ActivityName", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -75,7 +75,7 @@ namespace Hackaton2024.API.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Hackaton2024.API.Entities.Activity", b =>
+            modelBuilder.Entity("Hackaton2024.API.Entities.ActivityName", b =>
                 {
                     b.HasOne("Hackaton2024.API.Entities.User", "User")
                         .WithMany("Activities")
