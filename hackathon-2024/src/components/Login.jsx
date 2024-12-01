@@ -10,7 +10,7 @@ export function Login() {
   const navigate = useNavigate(); // Use useNavigate here
   const { setLogged, logged, setUserId } = useContext(AppContext);
   useEffect(() => {
-    if (logged) {
+    if (sessionStorage.getItem("accessKey")) {
       navigate("/landingPage");
     }
   });

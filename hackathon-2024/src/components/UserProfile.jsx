@@ -37,7 +37,6 @@ function UserProfile() {
         });
     }
   }, [setUserData]);
-  const { username } = useContext(AppContext); // Assume `username` exists in context
 
   return (
     <div className="user-container">

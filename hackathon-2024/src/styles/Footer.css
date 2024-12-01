@@ -6,6 +6,7 @@
   font-size: var(--font-size, 16px); /* Dynamiczny rozmiar czcionki */
   background-color: var(--footer-bg, #f8f8f8);
   color: var(--footer-color, #333);
+  margin-bottom: -13vh;
 }
 
 /* Footer Container */

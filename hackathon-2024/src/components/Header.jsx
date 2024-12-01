@@ -1,8 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/Header.css";
+import { AppContext } from "../App";
 
 function Header() {
+  const { userData } = useContext(AppContext);
+  const navigate = useNavigate();
+  console.log(userData);
+  const handleLogout = () => {
+    sessionStorage.removeItem("accessKey");
+    sessionStorage.removeItem("id"); // Optionally clear other session data
+    setAuthen(false);
+    navigate("/"); // Redirect to login page
+  };
+
   return (
     <header className="header">
       <div className="header-container">
@@ -21,11 +32,22 @@ function Header() {
             <li className="nav-item">
               <Link to="/user-profile">Profil</Link>
             </li>
+            <li className="nav-item">
+              {sessionStorage.getItem("accessKey") ? (
+                <Link className="auth-button" onClick={() => handleLogout()}>
+                  Logout
+                </Link>
+              ) : (
+                <Link className="auth-button" to="/">
+                  Login
+                </Link>
+              )}
+            </li>
           </ul>
         </nav>
         {/* Points Display */}
         <div className="points-display">
-          🔥 <span className="points">0</span>
+          🔥 <span className="points">{userData.points || 0}</span>
         </div>
       </div>
     </header>
