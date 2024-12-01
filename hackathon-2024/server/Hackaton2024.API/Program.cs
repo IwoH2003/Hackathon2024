@@ -11,6 +11,9 @@ using Hackaton2024.API.Middleware;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using Hackaton2024.API;
+using FluentValidation;
+using Hackaton2024.API.Models.DTOs;
+using Hackaton2024.API.Models.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,6 +55,8 @@ builder.Services.AddScoped<IUserContextService, UserContextService>();
 
 builder.Services.AddScoped<ErrorHandlingMiddleware>();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
+builder.Services.AddScoped<IValidator<RegisterUserDTO>, RegisterUserDTOValidator>();
+builder.Services.AddScoped<IValidator<LoginUserDTO>, LoginUserDTOValidator>();
 
 
 builder.Services.AddEndpointsApiExplorer();
@@ -95,6 +100,7 @@ var scope = app.Services.CreateScope();
 var seeder = scope.ServiceProvider.GetRequiredService<Seeder>();
 await seeder.Seed();
 app.UseMiddleware<ErrorHandlingMiddleware>();
+app.UseAuthentication();
 
 app.UseSwagger();
 app.UseSwaggerUI();

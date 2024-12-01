@@ -1,12 +1,14 @@
 ﻿using Hackaton2024.API.Models.DTOs;
 using Hackaton2024.API.Services;
 using Hackaton2024.API.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hackaton2024.API.Controllers
 {
     [Route("api/users")]
     [ApiController]
+    //[Authorize]
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
