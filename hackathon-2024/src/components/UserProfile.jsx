@@ -1,11 +1,43 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AppContext } from "../App";
 import "../styles/UserProfiles.css";
-import camera from "../images/camera.jpg";
+import axios from "axios";
 
 function UserProfile() {
-  const { username, currentUser } = useContext(AppContext); // Assume `username` exists in context
-  console.log(`Tuuuutej ${currentUser.firstName}`);
+  const { userData, setUserData } = useContext(AppContext);
+
+  // Enum to map activity stages to descriptive labels
+  const ActivityStage = {
+    0: "Unfinished",
+    1: "Completed",
+  };
+
+  useEffect(() => {
+    const id = sessionStorage.getItem("id");
+    if (id) {
+      axios
+        .get(`https://hackaton2024api.azurewebsites.net/api/users/${id}`)
+        .then((response) => {
+          sessionStorage.setItem("data", JSON.stringify(response.data)); // Save to sessionStorage
+
+          // Create the object with all fields from the API response
+          const obj = {
+            firstName: response.data.firstName,
+            lastName: response.data.lastName,
+            email: response.data.email,
+            points: response.data.points || 0, // Default points to 0 if missing
+            activities: response.data.activities || [], // Ensure activities is always an array
+          };
+
+          // Update the userData state with the complete object
+          setUserData(obj);
+        })
+        .catch((error) => {
+          console.error("Error fetching user data", error);
+        });
+    }
+  }, [setUserData]);
+
   return (
     <div className="user-container">
       {/* Top Section: User Photo and Summary */}
@@ -17,7 +49,9 @@ function UserProfile() {
           }}
         ></div>
         <div className="users-summary">
-          <h2>Welcome,{currentUser} </h2>
+          <h2>Welcome, {`${userData.firstName} ${userData.lastName}`}</h2>
+          <p>Email: {userData.email}</p>
+          <p>Points: {userData.points}</p>
           <p>
             Here's your summary. You can update your profile and check your
             activities below.
@@ -28,30 +62,18 @@ function UserProfile() {
       {/* Center Section: Title */}
       <h1 className="activities-title">Your Activities</h1>
 
-      {/* Bottom Section: Activity Images */}
+      {/* Bottom Section: Activities */}
       <div className="activities-section">
-        <button className="scroll-button">{"<"}</button>
-        <div className="activities">
-          <div
-            className="image-wrapper"
-            style={{
-              backgroundImage: `url("/src/images/questionmarks.jpg")`,
-            }}
-          ></div>
-          <div
-            className="image-wrapper"
-            style={{
-              backgroundImage: `url("/src/images/camera.jpg")`,
-            }}
-          ></div>
-          <div
-            className="image-wrapper"
-            style={{
-              backgroundImage: `url("/src/images/questionmarks.jpg")`,
-            }}
-          ></div>
-        </div>
-        <button className="scroll-button">{">"}</button>
+        {userData.activities.length > 0 ? (
+          userData.activities.map((activity, index) => (
+            <div key={index} className="activity-item">
+              <h3>{activity.name}</h3>
+              <p>Stage: {ActivityStage[activity.stage]}</p>
+            </div>
+          ))
+        ) : (
+          <p>No activities yet. Start something new!</p>
+        )}
       </div>
     </div>
   );

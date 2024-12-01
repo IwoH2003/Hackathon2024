@@ -26,7 +26,8 @@ export function Login() {
           password: values.password,
         })
         .then((response) => {
-          sessionStorage.setItem("accessKey", response.data.jwt); // Adjust based on API response
+          sessionStorage.setItem("accessKey", response.data.jwt);
+          sessionStorage.setItem("id", response.data.id);
           setLogged(true);
           setUserId(response.data.id);
           navigate("/landingPage");

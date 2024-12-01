@@ -3,10 +3,13 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate instead of
 import { useFormik } from "formik";
 import { AppContext } from "../App";
 import axios from "axios";
-import "../styles/LoginPage.css";
+import motherAndChild from "../video/motherAndChild.mp4";
+import "../styles/RegisterPage.css";
+
 export function Register() {
   const navigate = useNavigate(); // Use useNavigate here
-  const { logged, setLogged } = useContext(AppContext);
+  const { setLogged } = useContext(AppContext);
+
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -16,10 +19,6 @@ export function Register() {
       confirmPassword: "",
     },
     onSubmit: (values) => {
-      console.log(values);
-      console.log(values.firstName);
-      console.log(typeof values.firstName);
-      console.log(typeof values.email);
       axios
         .post(
           "https://hackaton2024api.azurewebsites.net/api/account/register",
@@ -32,16 +31,30 @@ export function Register() {
           }
         )
         .then((response) => {
-          alert(response);
+          alert("Registration successful!");
+          navigate("/login");
+        })
+        .catch((error) => {
+          console.error("Registration failed:", error);
+          alert("Registration failed. Please try again.");
         });
-      navigate("/landingPage");
     },
   });
 
   return (
-    <div className="content-container">
-      <form className="login-form" onSubmit={formik.handleSubmit}>
-        <label htmlFor="firstName">FirstName</label>
+    <div className="register-container">
+      {/* Background Video */}
+      <video autoPlay loop muted playsInline className="background-video">
+        <source src={motherAndChild} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Overlay for dimming */}
+      <div className="overlay"></div>
+
+      {/* Register Form */}
+      <form className="register-form" onSubmit={formik.handleSubmit}>
+        <label htmlFor="firstName">First Name</label>
         <input
           id="firstName"
           name="firstName"
@@ -49,7 +62,7 @@ export function Register() {
           onChange={formik.handleChange}
           value={formik.values.firstName}
         />
-        <label htmlFor="lastName">LastName</label>
+        <label htmlFor="lastName">Last Name</label>
         <input
           id="lastName"
           name="lastName"
@@ -73,19 +86,21 @@ export function Register() {
           onChange={formik.handleChange}
           value={formik.values.password}
         />
-        <label htmlFor="confirmPassword">ConfirmPassword</label>
+        <label htmlFor="confirmPassword">Confirm Password</label>
         <input
           id="confirmPassword"
           name="confirmPassword"
           type="password"
           onChange={formik.handleChange}
           value={formik.values.confirmPassword}
-        ></input>
-        <button type="submit">Submit</button>
+        />
+        <button type="submit">Register</button>
       </form>
-      <div>
-        <p>If you dont have an account go to register</p>
-        <button onClick={() => navigate("/register")}>Register</button>
+
+      {/* Redirect to Login */}
+      <div className="content-container">
+        <p>Already have an account? Log in below:</p>
+        <button onClick={() => navigate("/")}>Login</button>
       </div>
     </div>
   );

@@ -5,11 +5,7 @@ import { AppContext } from "../App";
 import { useContext, useEffect } from "react";
 
 function LandingPage() {
-  const { logged, setUserId, userId } = useContext(AppContext);
-
-  useEffect(() => {
-    setUserId(userId);
-  }, []);
+  const { logged, userId } = useContext(AppContext);
 
   const navigate = useNavigate();
   return (
