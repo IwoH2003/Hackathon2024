@@ -33,7 +33,8 @@ public class AccountService : IAccountService
         {
            FirstName = dto.FirstName,
            LastName = dto.LastName,
-           Email = dto.Email
+           Email = dto.Email,
+           Points = 0
         };
 
         newUser.PasswordHash = _passwordHasher.HashPassword(newUser, dto.Password);
@@ -43,7 +44,8 @@ public class AccountService : IAccountService
         newUser.UserActivities = activities.Select(a => new UserActivity
         {
             ActivityId = a.Id,
-            User = newUser
+            User = newUser,
+            Stage = ActivityStage.NOT_STARTED
         }).ToList();
 
         await _dbContext.Users.AddAsync(newUser);

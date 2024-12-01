@@ -1,4 +1,6 @@
-﻿namespace Hackaton2024.API.Entities
+﻿using Hackaton2024.API.Models;
+
+namespace Hackaton2024.API.Entities
 {
     public class UserActivity
     {
@@ -7,5 +9,7 @@
 
         public int ActivityId { get; set; }
         public Activity Activity { get; set; }
+
+        public ActivityStage Stage { get; set; }
     }
 }

@@ -31,16 +31,19 @@ namespace Hackaton2024.API
         {
             List<Activity> activities = new List<Activity>
             {
-                new Activity() { Name = "Running" },
-                new Activity() { Name = "Reading" },
-                new Activity() { Name = "Cooking" },
-                new Activity() { Name = "Cycling" },
-                new Activity() { Name = "Swimming" },
-                new Activity() { Name = "Painting" },
-                new Activity() { Name = "Hiking" },
-                new Activity() { Name = "Dancing" },
-                new Activity() { Name = "Gardening" },
-                new Activity() { Name = "Writing" }
+                new Activity { Name = "Bieganie", PictureUrl = "https://github.com/IwoH2003/Hackathon2024/blob/main/hackathon-2024/src/images/running.jpg" },
+                new Activity { Name = "Rysowanie", PictureUrl = "https://github.com/IwoH2003/Hackathon2024/blob/main/hackathon-2024/src/images/drawing.jpg" },
+                new Activity { Name = "Gotowanie", PictureUrl = "https://github.com/IwoH2003/Hackathon2024/blob/main/hackathon-2024/src/images/cooking.jpg" },
+                new Activity { Name = "Kolarstwo", PictureUrl = "https://github.com/IwoH2003/Hackathon2024/blob/main/hackathon-2024/src/images/cycling.jpg" },
+                new Activity { Name = "Pływanie", PictureUrl = "https://github.com/IwoH2003/Hackathon2024/blob/main/hackathon-2024/src/images/swimming.jpg" },
+                new Activity { Name = "Malowanie", PictureUrl = "https://github.com/IwoH2003/Hackathon2024/blob/main/hackathon-2024/src/images/painting.jpg" },
+                new Activity { Name = "Hiking", PictureUrl = "https://github.com/IwoH2003/Hackathon2024/blob/main/hackathon-2024/src/images/hiking.jpg" },
+                new Activity { Name = "Taniec", PictureUrl = "https://github.com/IwoH2003/Hackathon2024/blob/main/hackathon-2024/src/images/dancing.jpg" },
+                new Activity { Name = "Ogrodnictwo", PictureUrl = "https://github.com/IwoH2003/Hackathon2024/blob/main/hackathon-2024/src/images/gardening.jpg" },
+                new Activity { Name = "Pisanie", PictureUrl = "https://github.com/IwoH2003/Hackathon2024/blob/main/hackathon-2024/src/images/writing.jpg" },
+                new Activity { Name = "Fotografia", PictureUrl = "https://github.com/IwoH2003/Hackathon2024/blob/main/hackathon-2024/src/images/camera.jpg" },
+                new Activity { Name = "Robienie na drutach", PictureUrl = "https://github.com/IwoH2003/Hackathon2024/blob/main/hackathon-2024/src/images/knitting.jpg" },
+                new Activity { Name = "Yoga", PictureUrl = "https://github.com/IwoH2003/Hackathon2024/blob/main/hackathon-2024/src/images/yoga.jpg" }
             };
 
             return activities;

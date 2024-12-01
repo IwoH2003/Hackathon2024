@@ -4,5 +4,6 @@
     {
         public string Name { get; set; }
         public ActivityStage Stage { get; set; }
+        public string PictureUrl { get; set; }
     }
 }

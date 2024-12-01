@@ -25,43 +25,43 @@ namespace Hackaton2024.API.Services
         public async Task AddPoints(int userId, ChangeStageDTO stageDTO)
         {
             var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == userId);
-            var activity = await _dbContext.UserActivities
-                .Include(ua => ua.Activity)
+
+            var userActivity = await _dbContext.UserActivities
+                .Include(ua => ua.Activity)  
                 .Where(ua => ua.UserId == userId)
-                .Select(ua => ua.Activity)
-                .FirstOrDefaultAsync(x => x.Name == stageDTO.ActivityName);
+                .FirstOrDefaultAsync(x => x.Activity.Name == stageDTO.ActivityName);
 
             if (user is null)
             {
                 throw new NotFoundException("User not found");
             }
 
-            if (activity is null)
+            if (userActivity is null)
             {
                 throw new NotFoundException("Activity not found");
             }
 
             user.Points += 1;
-            activity.Stage = Models.ActivityStage.FINISHED;
+
+            userActivity.Stage = Models.ActivityStage.FINISHED;
 
             _dbContext.Users.Update(user);
-            _dbContext.Activities.Update(activity);
+            _dbContext.UserActivities.Update(userActivity);
             await _dbContext.SaveChangesAsync();
         }
 
         public async Task<UserDTO> GetUser(int userId)
         {
-            var activities = await _dbContext.UserActivities
+            var userActivities = await _dbContext.UserActivities
                 .Include(ua => ua.Activity)
                 .Where(ua => ua.UserId == userId)
-                .Select(ua => ua.Activity)
-                .ToListAsync(); 
+                .ToListAsync();
 
             var activitiesDtos = new List<ActivityDTO>();
 
-            foreach (var activity in activities)
+            foreach (var userActivity in userActivities)
             {
-                activitiesDtos.Add(new ActivityDTO() { Name = activity.Name, Stage = activity.Stage });
+                activitiesDtos.Add(new ActivityDTO() { Name = userActivity.Activity.Name, Stage = userActivity.Stage, PictureUrl = userActivity.Activity.PictureUrl });
             }
 
             var user = await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == userId);

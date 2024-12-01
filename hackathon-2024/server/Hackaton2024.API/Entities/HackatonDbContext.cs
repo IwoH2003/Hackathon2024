@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata;
 
 namespace Hackaton2024.API.Entities
 {
@@ -24,19 +25,6 @@ namespace Hackaton2024.API.Entities
                 .HasOne(ua => ua.Activity)
                 .WithMany(a => a.UserActivities)
                 .HasForeignKey(ua => ua.ActivityId);
-
-            modelBuilder.Entity<Activity>().HasData(
-                new Activity { Id = 1, Name = "Bieganie", Stage = Models.ActivityStage.NOT_STARTED },
-                new Activity { Id = 2, Name = "Czytanie", Stage = Models.ActivityStage.NOT_STARTED },
-                new Activity { Id = 3, Name = "Gotowanie", Stage = Models.ActivityStage.NOT_STARTED },
-                new Activity { Id = 4, Name = "Kolarstwo", Stage = Models.ActivityStage.NOT_STARTED },
-                new Activity { Id = 5, Name = "Pływanie", Stage = Models.ActivityStage.NOT_STARTED },
-                new Activity { Id = 6, Name = "Malowanie", Stage = Models.ActivityStage.NOT_STARTED },
-                new Activity { Id = 7, Name = "Hiking", Stage = Models.ActivityStage.NOT_STARTED },
-                new Activity { Id = 8, Name = "Taniec", Stage = Models.ActivityStage.NOT_STARTED },
-                new Activity { Id = 9, Name = "Ogrodnictwo", Stage = Models.ActivityStage.NOT_STARTED },
-                new Activity { Id = 10, Name = "Pisanie", Stage = Models.ActivityStage.NOT_STARTED }
-            );
         }
     }
 }

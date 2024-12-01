@@ -3,6 +3,7 @@ using Hackaton2024.API.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hackaton2024.API.Migrations
 {
     [DbContext(typeof(HackatonDbContext))]
-    partial class HackatonDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241201034543_test-pic")]
+    partial class testpic
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,6 +38,9 @@ namespace Hackaton2024.API.Migrations
                     b.Property<string>("PictureUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Stage")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -80,9 +85,6 @@ namespace Hackaton2024.API.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("ActivityId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Stage")
                         .HasColumnType("int");
 
                     b.HasKey("UserId", "ActivityId");

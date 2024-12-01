@@ -6,7 +6,7 @@ namespace Hackaton2024.API.Entities
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public ActivityStage Stage { get; set; }
+        public string PictureUrl { get; set; }
         public ICollection<UserActivity> UserActivities { get; set; }
     }
 }
